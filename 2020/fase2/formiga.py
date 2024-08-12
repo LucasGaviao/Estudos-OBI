@@ -1,4 +1,6 @@
 # Minha resolução para o problema Dona Formiga(https://olimpiada.ic.unicamp.br/pratique/ps/2020/f2/formiga/)
+# No presente o código apresenta problema de otimização. Funcionado e mostrando o resultado correto, contudo excedendo o limite de tempo permitido 
+# em aproximadamente 0,1 segundos. Portanto pontuando 40/100
 
 def contarCaminhos(possivel, sala, registro, cont, dicionario):
     #print(f"lista[{sala}]:{listaT}, cont:{cont}")
@@ -32,6 +34,6 @@ for i in range(0, t):
 # se o salão de partida for o mais baixo não é necessario verificar os caminhos
 if tuneis[p] == []:
     print(0)
-    exit()
-r1 = contarCaminhos(tuneis[p], p,0, 0, tuneis)
-print(r1)
+else:
+    r1 = contarCaminhos(tuneis[p], p,0, 0, tuneis)
+    print(r1)
