@@ -1,3 +1,15 @@
+# Minha resolução para o problema Dona Formiga(https://olimpiada.ic.unicamp.br/pratique/ps/2020/f2/formiga/)
+
+def contarCaminhos(possivel, sala, registro, cont, dicionario):
+    #print(f"lista[{sala}]:{listaT}, cont:{cont}")
+    if possivel != []:
+        for destino in possivel:
+            #print(f"1-lista[{sala}]:{listaT}, cont:{cont}, reg: {reg}, destino: {destino}\n")
+            registro = max(cont, registro, contarCaminhos(tuneis[destino], destino, registro, cont+1, dicionario))
+            #print(f"2-lista[{sala}]:{listaT}, cont:{cont}, reg: {reg}, destino: {destino}")
+    return max(registro, cont)
+
+# lendo os inputs
 s, t, p = map(int, input().split()) # salões, tuneis , partida
 alturas = list(map(int, input().split())) # altura das salas 
 
@@ -9,12 +21,11 @@ for q in range(s):
 
 # adicionando a lista de cada salão os possiveis para escorregar
 for i in range(0, t):
-    a, b = map(int, input().split())
+    a, b = map(int, input().split()) # lendo as salas que estão ligadas
     if alturas[a-1] > alturas[b-1]:
         tuneis[a].append(b)
     elif alturas[a-1] < alturas[b-1]:
         tuneis[b].append(a)
-    #print(f"{alturas[a-1] > alturas[b-1]}\n{alturas[a-1] < alturas[b-1]}")
 
 #print(tuneis)
 
@@ -22,16 +33,5 @@ for i in range(0, t):
 if tuneis[p] == []:
     print(0)
     exit()
-
-r1 = 0
-
-def contarCaminhos(listaT, sala, reg, cont):
-    #print(f"lista[{sala}]:{listaT}, cont:{cont}")
-    if listaT != []:
-        for destino in listaT:
-            #print(f"1-lista[{sala}]:{listaT}, cont:{cont}, reg: {reg}, destino: {destino}\n")
-            reg = max(cont, reg, contarCaminhos(tuneis[destino], destino, reg, cont+1))
-            #print(f"2-lista[{sala}]:{listaT}, cont:{cont}, reg: {reg}, destino: {destino}")
-    return max(reg, cont)
-r1 = contarCaminhos(tuneis[p], p,0, 0)
+r1 = contarCaminhos(tuneis[p], p,0, 0, tuneis)
 print(r1)
