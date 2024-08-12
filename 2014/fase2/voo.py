@@ -1,5 +1,5 @@
 # https://olimpiada.ic.unicamp.br/pratique/ps/2014/f2/voo/
-# Resolução pessoal.
+# Resolução pessoal. Pontuação: 100/100.
 class Horario:
     def __init__(self, horario):
         if len(horario) == 2:
